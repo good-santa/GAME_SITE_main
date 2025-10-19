@@ -14,7 +14,7 @@
           {% else %}
             <img src="{% static 'games/img/placeholder_cover.svg' %}" class="main-img" alt="{{ game.title }}">
           {% endif %}
-          {% if game.screenshot %}
+          {% if game.screenshot and game.cover and game.screenshot.name != game.cover.name %}
             <img src="{{ game.screenshot.url }}" class="second-img" alt="Скріншот {{ game.title }}">
           {% endif %}
         </div>
