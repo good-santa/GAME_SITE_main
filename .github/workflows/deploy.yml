@@ -3,7 +3,7 @@ name: Deploy Django to Railway
 on:
   push:
     branches:
-      - main  # деплой з гілки main
+      - main  # або гілка, з якої ти деплоїш
 
 jobs:
   deploy:
@@ -11,12 +11,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'  # Python 3.13 ще може глючити на Railway
+          python-version: '3.13'
 
       - name: Install dependencies
         run: |
@@ -27,13 +27,14 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
-          python manage.py makemigrations --noinput
-          python manage.py migrate --noinput
+          python manage.py makemigrations
+          python manage.py migrate
+          python manage.py collectstatic --noinput
+
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
 
       - name: Deploy to Railway
-        uses: railwayapp/railway-deploy@v2
-        with:
-          service: GAME_SITE_main
-          environment: production   # 🟢 додай це
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: railway up --service GAME_SITE_main --yes
