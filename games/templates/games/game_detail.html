@@ -36,7 +36,11 @@
         <div class="recommend">
           {% for rec in recommended %}
             <a href="{% url 'game_detail' rec.pk %}" class="rec-card">
-              <img src="{{ rec.cover.url }}" alt="{{ rec.title }}">
+              {% if rec.cover %}
+                <img src="{{ rec.cover.url }}" alt="{{ rec.title }}">
+              {% else %}
+                <img src="{% static 'games/img/placeholder_cover.svg' %}" alt="{{ rec.title }}">
+              {% endif %}
               <p>{{ rec.title }}</p>
             </a>
           {% endfor %}
