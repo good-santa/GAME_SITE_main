@@ -37,5 +37,5 @@ jobs:
       - name: Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: railway up --service GAME_SITE_main -- --yes
+        run: railway up --service GAME_SITE_main --yes=true
 
