@@ -68,9 +68,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database (uses Railway DATABASE_URL if available)
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL', 'mysql://root:11082008@localhost:3306/game_site')
+        default=os.getenv('MYSQL_URL')
     )
 }
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
