@@ -20,7 +20,7 @@ class GameAdmin(admin.ModelAdmin):
             'fields': ('price', 'original_price')
         }),
         ('Медіа', {
-            'fields': ('cover', 'screenshot')
+            'fields': ('cover', 'screenshot', 'video_url')
         }),
     )
     actions = ("attach_images_by_title", "attach_images_by_pk",)

@@ -23,10 +23,15 @@
           <p class="genre">Жанр: {{ game.genre }}</p>
           <p class="desc">{{ game.description }}</p>
           <p class="price">{{ game.price }}</p>
-          <form action="{% url 'cart_add' game.pk %}" method="post">
+          <form action="{% url 'cart_add' game.pk %}" method="post" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
             {% csrf_token %}
             <input type="hidden" name="next" value="{% url 'cart' %}">
             <button class="buy" type="submit">Додати до кошика</button>
+            {% if game.video_url %}
+              <a class="btn btn-secondary" href="{{ game.video_url }}" target="_blank" rel="noopener">Відео</a>
+            {% else %}
+              <a class="btn btn-secondary" href="https://www.youtube.com/results?search_query={{ game.title|urlencode }}+trailer" target="_blank" rel="noopener">Відео</a>
+            {% endif %}
           </form>
         </div>
       </div>

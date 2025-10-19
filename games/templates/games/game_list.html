@@ -59,6 +59,11 @@
             <input type="hidden" name="next" value="{% url 'cart' %}">
             <button class="btn" type="submit">До кошика</button>
           </form>
+          {% if game.video_url %}
+            <a class="btn btn-secondary" style="margin-top:8px; display:inline-block;" href="{{ game.video_url }}" target="_blank" rel="noopener">Відео</a>
+          {% else %}
+            <a class="btn btn-secondary" style="margin-top:8px; display:inline-block;" href="https://www.youtube.com/results?search_query={{ game.title|urlencode }}+trailer" target="_blank" rel="noopener">Відео</a>
+          {% endif %}
         </article>
       {% empty %}
         <p class="empty-message">Нічого не знайдено.</p>
@@ -66,4 +71,3 @@
     </div>
   </div>
 {% endblock %}
-
