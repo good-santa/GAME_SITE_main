@@ -1,0 +1,69 @@
+{% extends 'games/base.html' %}
+{% load static %}
+
+{% block title %}Каталог{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1 style="margin: 12px 0 20px;">Каталог</h1>
+
+    <section class="filter-panel">
+      <button class="filter-toggle" type="button" data-filter-toggle aria-expanded="false">
+        Фільтри
+        <span data-lucide="chevron-down"></span>
+      </button>
+      <div class="filter-content" id="filter-content" hidden>
+        <form method="get">
+          <div class="filter-group">
+            <h4>Жанри</h4>
+            <div class="genre-list">
+              {% for g in genres %}
+                <label class="check">
+                  <input type="checkbox" name="genres" value="{{ g }}" {% if selected_genres and g in selected_genres %}checked{% endif %}>
+                  <span>{{ g }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="filter-actions">
+            <button class="btn" type="submit">Застосувати</button>
+            <a class="btn btn-secondary" href="{% url 'game_list' %}">Скинути</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <div class="product-grid">
+      {% for game in games %}
+        <article class="product-card">
+          <a class="product-cover" href="{% url 'game_detail' game.pk %}">
+            {% if game.cover %}
+              <img src="{{ game.cover.url }}" alt="{{ game.title }}">
+            {% else %}
+              <img src="{% static 'games/img/placeholder_cover.svg' %}" alt="{{ game.title }}">
+            {% endif %}
+          </a>
+          <div class="product-meta">Відеогра</div>
+          <h3 class="product-title">{{ game.title }}</h3>
+          <div class="product-pricing">
+            {% if game.original_price and game.original_price > game.price %}
+              <span class="badge-discount">-{{ game.discount_percent }}%</span>
+              <span class="old-price">{{ game.original_price }}</span>
+              <span class="new-price">{{ game.price }}</span>
+            {% else %}
+              <span class="new-price">{{ game.price }}</span>
+            {% endif %}
+          </div>
+          <form action="{% url 'cart_add' game.pk %}" method="post" style="margin-top:8px;">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'cart' %}">
+            <button class="btn" type="submit">До кошика</button>
+          </form>
+        </article>
+      {% empty %}
+        <p class="empty-message">Нічого не знайдено.</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+

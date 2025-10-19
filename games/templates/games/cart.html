@@ -1,0 +1,51 @@
+{% extends 'games/base.html' %}
+
+{% block title %}Кошик{% endblock %}
+
+{% block content %}
+  <div class="container" style="padding: 24px 0 60px;">
+    <h1 style="margin-bottom: 16px;">Кошик</h1>
+
+    {% if items %}
+      <div class="cart-list" style="display: grid; gap: 16px;">
+        {% for row in items %}
+          <article style="display:flex; align-items:center; gap:16px; background: var(--bg-panel); padding: 14px; border-radius: 12px;">
+            <a href="{% url 'game_detail' row.game.pk %}" style="display:block; width: 120px; height: 70px; overflow:hidden; border-radius: 8px; background:#0e141b;">
+              {% if row.game.cover %}
+                <img src="{{ row.game.cover.url }}" alt="{{ row.game.title }}" style="width:100%; height:100%; object-fit:cover; display:block;" />
+              {% endif %}
+            </a>
+            <div style="flex:1 1 auto;">
+              <h3 style="margin-bottom:6px; color:#fff;">{{ row.game.title }}</h3>
+              <div style="color: var(--text-dim)">Кількість: {{ row.qty }}</div>
+            </div>
+            <div style="font-weight: 700; color:#fff; min-width:100px; text-align:right;">{{ row.subtotal }}</div>
+            <form action="{% url 'cart_remove' row.game.pk %}" method="post" style="margin:0 0 0 8px;">
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{% url 'cart' %}">
+              <button class="btn btn-secondary" type="submit">Прибрати</button>
+            </form>
+          </article>
+        {% endfor %}
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 20px;">
+        <a class="btn btn-secondary" href="{% url 'game_list' %}">Продовжити покупки</a>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <form action="{% url 'cart_clear' %}" method="post" style="margin:0;">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'cart' %}">
+            <button class="btn btn-secondary" type="submit">Очистити</button>
+          </form>
+          <div style="font-size:18px; font-weight:700; color:#fff;">Разом: {{ total }}</div>
+          <button class="btn" type="button">Оформити</button>
+        </div>
+      </div>
+    {% else %}
+      <p class="empty-message">Кошик порожній.</p>
+      <div style="margin-top: 16px;">
+        <a class="btn" href="{% url 'game_list' %}">Перейти до каталогу</a>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

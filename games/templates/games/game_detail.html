@@ -1,0 +1,47 @@
+{% extends 'games/base.html' %}
+{% load static %}
+
+{% block title %}{{ game.title }}{% endblock %}
+
+{% block content %}
+  <section class="game-detail-section">
+    <div class="container">
+      <a href="{% url 'game_list' %}" class="back">← До каталогу</a>
+      <div class="game-detail">
+        <div class="gallery">
+          {% if game.cover %}
+            <img src="{{ game.cover.url }}" class="main-img" alt="{{ game.title }}">
+          {% else %}
+            <img src="{% static 'games/img/placeholder_cover.svg' %}" class="main-img" alt="{{ game.title }}">
+          {% endif %}
+          {% if game.screenshot %}
+            <img src="{{ game.screenshot.url }}" class="second-img" alt="Скріншот {{ game.title }}">
+          {% endif %}
+        </div>
+        <div class="details">
+          <h1>{{ game.title }}</h1>
+          <p class="genre">Жанр: {{ game.genre }}</p>
+          <p class="desc">{{ game.description }}</p>
+          <p class="price">{{ game.price }}</p>
+          <form action="{% url 'cart_add' game.pk %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'cart' %}">
+            <button class="buy" type="submit">Додати до кошика</button>
+          </form>
+        </div>
+      </div>
+
+      {% if recommended %}
+        <h2>Схожі ігри</h2>
+        <div class="recommend">
+          {% for rec in recommended %}
+            <a href="{% url 'game_detail' rec.pk %}" class="rec-card">
+              <img src="{{ rec.cover.url }}" alt="{{ rec.title }}">
+              <p>{{ rec.title }}</p>
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

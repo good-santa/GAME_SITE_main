@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Сторінка{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'games/css/style.css' %}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrapper steam-bar">
+      <a href="{% url 'game_list' %}" class="logo" aria-label="На головну">GS</a>
+      <nav class="main-nav">
+        <a href="{% url 'game_list' %}">Каталог</a>
+      </nav>
+      <form action="{% url 'game_list' %}" method="get" class="search-bar" role="search">
+        <input type="text" name="q" value="{{ query }}" placeholder="Пошук ігор..." aria-label="Пошук">
+        <button type="submit" title="Шукати">⌕</button>
+      </form>
+      <a class="menu-link cart-link" href="{% url 'cart' %}" title="Кошик">
+        🛒 Кошик
+        {% if cart_count and cart_count > 0 %}
+          <span class="cart-badge">{{ cart_count }}</span>
+        {% endif %}
+      </a>
+    </div>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <div class="container" style="padding: 20px 0; color: #9fb8cc; text-align: center; border-top: 1px solid rgba(102,192,244,0.2);">
+      © {% now "Y" %} Магазин ігор. Усі права захищено.
+    </div>
+  </footer>
+  <script src="{% static 'games/js/scripts.js' %}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
