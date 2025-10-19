@@ -1,75 +1,39 @@
-name: CI/CD (Django → Heroku)
+name: Deploy Django to Railway
 
 on:
   push:
-    branches: [ "main" ]
-  workflow_dispatch:
-
-permissions:
-  contents: read
+    branches:
+      - main  # деплой з гілки main
 
 jobs:
-  build:
-    name: Build and Check
+  deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout (with LFS)
-        uses: actions/checkout@v4
-        with:
-          lfs: true
 
-      - name: Git LFS pull
-        run: |
-          git lfs install
-          git lfs pull
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.13'
+          python-version: '3.11'  # Python 3.13 ще може глючити на Railway
 
-      - name: Install OS deps (mysqlclient)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libmysqlclient-dev
-
-      - name: Install Python deps
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Django system checks
+      - name: Run migrations
         env:
-          DJANGO_SETTINGS_MODULE: config.settings
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
-          python manage.py check
+          python manage.py makemigrations --noinput
+          python manage.py migrate --noinput
 
-  deploy:
-    name: Deploy to Heroku
-    needs: build
-    runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' && secrets.HEROKU_API_KEY && secrets.HEROKU_APP_NAME && secrets.HEROKU_EMAIL }}
-    steps:
-      - name: Checkout (with LFS)
-        uses: actions/checkout@v4
+      - name: Deploy to Railway
+        uses: railwayapp/railway-deploy@v2
         with:
-          lfs: true
-
-      - name: Git LFS pull
-        run: |
-          git lfs install
-          git lfs pull
-
-      - name: Deploy
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
-          usedocker: false
-          dontuseforce: true
-          rollbackonhealthcheckfailed: true
-          healthcheck: "https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com/"
-          checkstring: ""
-          delay: 10
-
+          service: GAME_SITE_main
+          environment: production   # 🟢 додай це
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
