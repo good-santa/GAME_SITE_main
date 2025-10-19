@@ -3,3 +3,4 @@ mysqlclient==2.2.7
 gunicorn 
 dj-database-url 
 python-dotenv 
+Pillow
