@@ -1,23 +1,282 @@
 [
-  {"model": "games.game", "pk": 1001, "fields": {"title": "Cyberpunk 2077", "description": "RPG у відкритому світі від CDPR.", "genre": "RPG", "platform": "PC", "price": "999.00", "original_price": "1299.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1002, "fields": {"title": "The Witcher 3: Wild Hunt", "description": "Епічна пригода Ґеральта з Рівії.", "genre": "RPG", "platform": "PC", "price": "799.00", "original_price": "999.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1003, "fields": {"title": "Grand Theft Auto V", "description": "Екшен у відкритому світі Лос-Сантоса.", "genre": "Action", "platform": "PC", "price": "899.00", "original_price": "1099.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1004, "fields": {"title": "DOOM Eternal", "description": "Швидкісний шутер про винищення демонів.", "genre": "Shooter", "platform": "PC", "price": "699.00", "original_price": "899.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1005, "fields": {"title": "Elden Ring", "description": "Souls-like пригодницький екшен у відкритому світі.", "genre": "Action RPG", "platform": "PC", "price": "1199.00", "original_price": "1499.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1006, "fields": {"title": "Hades", "description": "Rogue-like від Supergiant з динамічним боєм.", "genre": "Rogue-like", "platform": "PC", "price": "349.00", "original_price": "449.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1007, "fields": {"title": "Red Dead Redemption 2", "description": "Пригода в відкритому світі Дикого Заходу.", "genre": "Adventure", "platform": "PC", "price": "1199.00", "original_price": "1499.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1008, "fields": {"title": "God of War", "description": "Сага про Кратоса та Атрея.", "genre": "Action", "platform": "PC", "price": "1099.00", "original_price": "1299.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1009, "fields": {"title": "Horizon Zero Dawn", "description": "Світ роботизованих істот і пригод Елоя.", "genre": "Action RPG", "platform": "PC", "price": "799.00", "original_price": "999.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1010, "fields": {"title": "Sekiro: Shadows Die Twice", "description": "Напружений екшен з наголосом на парирування.", "genre": "Action", "platform": "PC", "price": "949.00", "original_price": "1199.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1011, "fields": {"title": "Assassin's Creed Valhalla", "description": "Скандинавські пригоди Ейвора.", "genre": "Action", "platform": "PC", "price": "899.00", "original_price": "1099.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1012, "fields": {"title": "Forza Horizon 5", "description": "Аркадні перегони у відкритому світі Мексики.", "genre": "Racing", "platform": "PC", "price": "999.00", "original_price": "1299.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1013, "fields": {"title": "FIFA 24", "description": "Футбольний симулятор нового покоління.", "genre": "Sports", "platform": "PC", "price": "899.00", "original_price": "999.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1014, "fields": {"title": "NBA 2K24", "description": "Баскетбольний симулятор з реалістичною фізикою.", "genre": "Sports", "platform": "PC", "price": "799.00", "original_price": "899.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1015, "fields": {"title": "Civilization VI", "description": "Покрокова стратегія — побудуй свою імперію.", "genre": "Strategy", "platform": "PC", "price": "399.00", "original_price": "599.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1016, "fields": {"title": "Stardew Valley", "description": "Фермерський симулятор з RPG-елементами.", "genre": "Indie", "platform": "PC", "price": "199.00", "original_price": null, "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1017, "fields": {"title": "Terraria", "description": "Пісочниця з дослідженнями, будівництвом і боєм.", "genre": "Indie", "platform": "PC", "price": "229.00", "original_price": null, "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1018, "fields": {"title": "Resident Evil 4", "description": "Ремейк культового хорору з новою графікою.", "genre": "Horror", "platform": "PC", "price": "1099.00", "original_price": "1299.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1019, "fields": {"title": "Metro Exodus", "description": "Постапокаліптичний шутер з елементами виживання.", "genre": "Shooter", "platform": "PC", "price": "549.00", "original_price": "799.00", "cover": null, "screenshot": null}},
-  {"model": "games.game", "pk": 1020, "fields": {"title": "Control", "description": "Містичний екшен у стилі Remedy.", "genre": "Action", "platform": "PC", "price": "499.00", "original_price": "699.00", "cover": null, "screenshot": null}}
+    {
+        "model":  "games.game",
+        "pk":  1001,
+        "fields":  {
+                       "title":  "Cyberpunk 2077",
+                       "description":  "RPG у відкритому світі від CDPR.",
+                       "genre":  "RPG",
+                       "platform":  "PC",
+                       "price":  "999.00",
+                       "original_price":  "1299.00",
+                       "cover":  null,
+                       "screenshot":  null
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1002,
+        "fields":  {
+                       "title":  "The Witcher 3: Wild Hunt",
+                       "description":  "Епічна пригода Ґеральта з Рівії.",
+                       "genre":  "RPG",
+                       "platform":  "PC",
+                       "price":  "799.00",
+                       "original_price":  "999.00",
+                       "cover":  null,
+                       "screenshot":  null
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1003,
+        "fields":  {
+                       "title":  "Grand Theft Auto V",
+                       "description":  "Екшен у відкритому світі Лос-Сантоса.",
+                       "genre":  "Action",
+                       "platform":  "PC",
+                       "price":  "899.00",
+                       "original_price":  "1099.00",
+                       "cover":  "images/grand-theft-auto-v.jpg",
+                       "screenshot":  "images/grand-theft-auto-v.jpg"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1004,
+        "fields":  {
+                       "title":  "DOOM Eternal",
+                       "description":  "Швидкісний шутер про винищення демонів.",
+                       "genre":  "Shooter",
+                       "platform":  "PC",
+                       "price":  "699.00",
+                       "original_price":  "899.00",
+                       "cover":  null,
+                       "screenshot":  null
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1005,
+        "fields":  {
+                       "title":  "Elden Ring",
+                       "description":  "Souls-like пригодницький екшен у відкритому світі.",
+                       "genre":  "Action RPG",
+                       "platform":  "PC",
+                       "price":  "1199.00",
+                       "original_price":  "1499.00",
+                       "cover":  "images/elden-ring.png",
+                       "screenshot":  "images/elden-ring.png"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1006,
+        "fields":  {
+                       "title":  "Hades",
+                       "description":  "Rogue-like від Supergiant з динамічним боєм.",
+                       "genre":  "Rogue-like",
+                       "platform":  "PC",
+                       "price":  "349.00",
+                       "original_price":  "449.00",
+                       "cover":  "images/Hades.png",
+                       "screenshot":  "images/Hades.png"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1007,
+        "fields":  {
+                       "title":  "Red Dead Redemption 2",
+                       "description":  "Пригода в відкритому світі Дикого Заходу.",
+                       "genre":  "Adventure",
+                       "platform":  "PC",
+                       "price":  "1199.00",
+                       "original_price":  "1499.00",
+                       "cover":  null,
+                       "screenshot":  null
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1008,
+        "fields":  {
+                       "title":  "God of War",
+                       "description":  "Сага про Кратоса та Атрея.",
+                       "genre":  "Action",
+                       "platform":  "PC",
+                       "price":  "1099.00",
+                       "original_price":  "1299.00",
+                       "cover":  "images/God-of-War.png",
+                       "screenshot":  "images/God-of-War.png"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1009,
+        "fields":  {
+                       "title":  "Horizon Zero Dawn",
+                       "description":  "Світ роботизованих істот і пригод Елоя.",
+                       "genre":  "Action RPG",
+                       "platform":  "PC",
+                       "price":  "799.00",
+                       "original_price":  "999.00",
+                       "cover":  "images/horizon-zero-dawn.png",
+                       "screenshot":  "images/horizon-zero-dawn.png"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1010,
+        "fields":  {
+                       "title":  "Sekiro: Shadows Die Twice",
+                       "description":  "Напружений екшен з наголосом на парирування.",
+                       "genre":  "Action",
+                       "platform":  "PC",
+                       "price":  "949.00",
+                       "original_price":  "1199.00",
+                       "cover":  "images/Sekiro-Shadows-Die-Twice.png",
+                       "screenshot":  "images/Sekiro-Shadows-Die-Twice.png"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1011,
+        "fields":  {
+                       "title":  "Assassin\u0027s Creed Valhalla",
+                       "description":  "Скандинавські пригоди Ейвора.",
+                       "genre":  "Action",
+                       "platform":  "PC",
+                       "price":  "899.00",
+                       "original_price":  "1099.00",
+                       "cover":  "images/Assassin\u0027s-Creed-Valhalla.png",
+                       "screenshot":  "images/Assassin\u0027s-Creed-Valhalla.png"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1012,
+        "fields":  {
+                       "title":  "Forza Horizon 5",
+                       "description":  "Аркадні перегони у відкритому світі Мексики.",
+                       "genre":  "Racing",
+                       "platform":  "PC",
+                       "price":  "999.00",
+                       "original_price":  "1299.00",
+                       "cover":  "images/Forza-Horizon-5.png",
+                       "screenshot":  "images/Forza-Horizon-5.png"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1013,
+        "fields":  {
+                       "title":  "FIFA 24",
+                       "description":  "Футбольний симулятор нового покоління.",
+                       "genre":  "Sports",
+                       "platform":  "PC",
+                       "price":  "899.00",
+                       "original_price":  "999.00",
+                       "cover":  "images/FIFA-24.png",
+                       "screenshot":  "images/FIFA-24.png"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1014,
+        "fields":  {
+                       "title":  "NBA 2K24",
+                       "description":  "Баскетбольний симулятор з реалістичною фізикою.",
+                       "genre":  "Sports",
+                       "platform":  "PC",
+                       "price":  "799.00",
+                       "original_price":  "899.00",
+                       "cover":  "images/NBA-2K24.png",
+                       "screenshot":  "images/NBA-2K24.png"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1015,
+        "fields":  {
+                       "title":  "Civilization VI",
+                       "description":  "Покрокова стратегія — побудуй свою імперію.",
+                       "genre":  "Strategy",
+                       "platform":  "PC",
+                       "price":  "399.00",
+                       "original_price":  "599.00",
+                       "cover":  "images/Civilization-VI.png",
+                       "screenshot":  "images/Civilization-VI.png"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1016,
+        "fields":  {
+                       "title":  "Stardew Valley",
+                       "description":  "Фермерський симулятор з RPG-елементами.",
+                       "genre":  "Indie",
+                       "platform":  "PC",
+                       "price":  "199.00",
+                       "original_price":  null,
+                       "cover":  "images/Stardew-Valley.png",
+                       "screenshot":  "images/Stardew-Valley.png"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1017,
+        "fields":  {
+                       "title":  "Terraria",
+                       "description":  "Пісочниця з дослідженнями, будівництвом і боєм.",
+                       "genre":  "Indie",
+                       "platform":  "PC",
+                       "price":  "229.00",
+                       "original_price":  null,
+                       "cover":  "images/Terraria.png",
+                       "screenshot":  "images/Terraria.png"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1018,
+        "fields":  {
+                       "title":  "Resident Evil 4",
+                       "description":  "Ремейк культового хорору з новою графікою.",
+                       "genre":  "Horror",
+                       "platform":  "PC",
+                       "price":  "1099.00",
+                       "original_price":  "1299.00",
+                       "cover":  "images/Resident-Evil-4.png",
+                       "screenshot":  "images/Resident-Evil-4.png"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1019,
+        "fields":  {
+                       "title":  "Metro Exodus",
+                       "description":  "Постапокаліптичний шутер з елементами виживання.",
+                       "genre":  "Shooter",
+                       "platform":  "PC",
+                       "price":  "549.00",
+                       "original_price":  "799.00",
+                       "cover":  "images/Metro-Exodus.png",
+                       "screenshot":  "images/Metro-Exodus.png"
+                   }
+    },
+    {
+        "model":  "games.game",
+        "pk":  1020,
+        "fields":  {
+                       "title":  "Control",
+                       "description":  "Містичний екшен у стилі Remedy.",
+                       "genre":  "Action",
+                       "platform":  "PC",
+                       "price":  "499.00",
+                       "original_price":  "699.00",
+                       "cover":  "images/Control.png",
+                       "screenshot":  "images/Control.png"
+                   }
+    }
 ]
-
